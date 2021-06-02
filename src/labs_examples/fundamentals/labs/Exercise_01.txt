@@ -18,7 +18,46 @@ Fundamentals Exercise 1: CLI
          b. Use $ cat print contents of file
          c. Use $ grep to search for a word inside file
 
-Example Output (pwd):
-    1. Cadens-MacBook-Pro:CodingNomads cadenmackenzie$ pwd
-       /Users/cadenmackenzie/Documents/CodingNomads
+Exercise 1 Checklist ----------------------------------------------
+
+    1. online-java-fundamentals git:(master) ✗ cd ..
+       ➜  labs cd ..
+    2. CodingNomads mkdir Terminal_testing
+       ➜  CodingNomads cd Terminal_testing
+    3 -a. Terminal_testing touch text_1.txt text_2.txt text_3.txt
+      -b. /Users/Melissa/Code/CodingNomads/Terminal_testing
+      -c. Terminal_testing ls -al
+          total 0
+          drwxr-xr-x  5 Melissa  staff  160 Jun  2 10:48 .
+          drwxr-xr-x  6 Melissa  staff  192 Jun  2 10:47 ..
+          -rw-r--r--  1 Melissa  staff    0 Jun  2 10:48 text_1.txt
+          -rw-r--r--  1 Melissa  staff    0 Jun  2 10:48 text_2.txt
+          -rw-r--r--  1 Melissa  staff    0 Jun  2 10:48 text_3.txt
+     5.  Terminal_testing mkdir new_folder
+       ➜  Terminal_testing ls
+       new_folder text_1.txt text_2.txt text_3.txt
+     6.  ➜  Terminal_testing cp /Users/Melissa/Code/CodingNomads/Terminal_testing/text_1.txt /Users/Melissa/Code/CodingNomads/Terminal_testing/new_folder
+       ➜  Terminal_testing ls
+       new_folder text_1.txt text_2.txt text_3.txt
+       ➜  Terminal_testing cd new_folder
+       ➜  new_folder
+     7.   new_folder cd ..
+        ➜  Terminal_testing mv /Users/Melissa/Code/CodingNomads/Terminal_testing/text_2.txt /Users/Melissa/Code/CodingNomads/Terminal_testing/new_folder/text_2.txt
+        ➜  Terminal_testing cd new_folder
+        ➜  new_folder ls
+        text_1.txt text_2.txt
+        ➜  new_folder
+     8. a.    new_folder rm text_1.txt
+           ➜  new_folder ls
+           text_2.txt
+        b. ➜  Terminal_testing rm -fr new_folder
+           ➜  Terminal_testing ls
+           text_1.txt text_3.txt
+           ➜  Terminal_testing
+
+     9.  a. vim text_1.txt
+         b. Terminal_testing cat text_1.txt
+        Used vim to write some text in the file.
+         c. ➜  Terminal_testing grep 'some' text_1.txt
+            Used vim to write some text in the file.
 

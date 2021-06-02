@@ -10,11 +10,11 @@ Initializing git folder
         b. Make new file
         c. Add file
         d. Commit file
-        c. On Github, create new git_practice repository
-        d. Add this new GitHub repository as a new "remote" to your local Git repo. You can do this by using the command
+        e. On Github, create new git_practice repository
+        f. Add this new GitHub repository as a new "remote" to your local Git repo. You can do this by using the command
             git remote add <ANY_NAME> <URL_OF_NEW_GITHUB_REPO.git>
-        d. Push commit file to Github
-        e. Practice the following git flow until you feel comfortable:
+        g. Push commit file to Github
+        h. Practice the following git flow until you feel comfortable:
             i.   Create or modify file
             ii.  Add file(s)
             iii. Commit file(s)
@@ -32,3 +32,96 @@ Cloning repository from Github
     3. Create new repository on Github
     4. Add new remote on local machine
     5. Push to new Github repository
+
+
+
+Exercise 2 Checklist ----------------------------------------------
+
+1. CodingNomads mkdir git_practice
+2. a. git_practice git init
+      Initialized empty Git repository in /Users/Melissa/Code/CodingNomads/git_practice/.git/
+   b. ➜  git_practice git:(master) touch new_file.txt
+   c. ➜  git_practice git:(master) ✗ git add new_file.txt
+   d. ➜  git_practice git:(master) ✗ git commit -m "made new file"
+      [master (root-commit) 5620974] made new file
+       1 file changed, 0 insertions(+), 0 deletions(-)
+       create mode 100644 new_file.txt
+   e. Made repo on GitHub
+   f. used command git remote add origin https://github.com/LDRMuse/git_practice.git
+   g. git_practice git:(master) git push
+     fatal: The current branch master has no upstream branch.
+     To push the current branch and set the remote as upstream, use
+
+         git push --set-upstream origin master
+
+     ➜  git_practice git:(master) git push --set-upstream origin master
+     Enumerating objects: 3, done.
+     Counting objects: 100% (3/3), done.
+     Writing objects: 100% (3/3), 220 bytes | 220.00 KiB/s, done.
+     Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+     To https://github.com/LDRMuse/git_practice.git
+      * [new branch]      master -> master
+     Branch 'master' set up to track remote branch 'master' from 'origin'.
+   h.  git_practice git:(master) touch new_file_2.txt
+      ➜  git_practice git:(master) ✗ ls
+      new_file.txt   new_file_2.txt
+      ➜  git_practice git:(master) ✗ vim new_file_2.txt
+      ➜  git_practice git:(master) ✗ git status
+      On branch master
+      Your branch is up to date with 'origin/master'.
+
+      Untracked files:
+        (use "git add <file>..." to include in what will be committed)
+      	new_file_2.txt
+
+      nothing added to commit but untracked files present (use "git add" to track)
+      ➜  git_practice git:(master) ✗ git add new_file_2.txt
+      ➜  git_practice git:(master) ✗ git commit -m "Make a new file and modify w/ vim"
+
+      [master e2277a6] Make a new file and modify w/ vim
+       1 file changed, 1 insertion(+)
+       create mode 100644 new_file_2.txt
+      ➜  git_practice git:(master) git push
+      Enumerating objects: 4, done.
+      Counting objects: 100% (4/4), done.
+      Delta compression using up to 4 threads
+      Compressing objects: 100% (2/2), done.
+      Writing objects: 100% (3/3), 325 bytes | 325.00 KiB/s, done.
+      Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+      To https://github.com/LDRMuse/git_practice.git
+         5620974..e2277a6  master -> master
+
+Adding a remote
+    ➜  git_practice git:(master) git remote add melissa https://github.com/LDRMuse/git_practice.git
+
+    ➜  git_practice git:(master) git push -u melissa
+    Branch 'master' set up to track remote branch 'master' from 'melissa'.
+    Everything up-to-date
+    ➜  git_practice git:(master) git remote -v
+    melissa	https://github.com/LDRMuse/git_practice.git (fetch)
+    melissa	https://github.com/LDRMuse/git_practice.git (push)
+    origin	https://github.com/LDRMuse/git_practice.git (fetch)
+    origin	https://github.com/LDRMuse/git_practice.git (push)
+
+
+Cloning repository from Github
+  1. Found repo on Github -> https://github.com/Monogramm/spring-rest-api-starter
+  2.  ➜  CodingNomads git clone https://github.com/Monogramm/spring-rest-api-starter.git
+    Cloning into 'spring-rest-api-starter'...
+    remote: Enumerating objects: 3665, done.
+    remote: Counting objects: 100% (233/233), done.
+    remote: Compressing objects: 100% (147/147), done.
+    remote: Total 3665 (delta 113), reused 174 (delta 75), pack-reused 3432
+    Receiving objects: 100% (3665/3665), 896.32 KiB | 1.15 MiB/s, done.
+    Resolving deltas: 100% (1889/1889), done.
+    3. git_practice_3
+    4. ➜  git_practice_3 git:(main) git remote -v
+       melissa	https://github.com/LDRMuse/git_practice_3.git (fetch)
+       melissa	https://github.com/LDRMuse/git_practice_3.git (push)
+       origin	https://github.com/LDRMuse/git_practice_3.git (fetch)
+       origin	https://github.com/LDRMuse/git_practice_3.git (push)
+       remote2	https://github.com/LDRMuse/git_practice_3 (fetch)
+       remote2	https://github.com/LDRMuse/git_practice_3 (push)
+    5. ➜  git_practice_3 git:(main) git push -u remote2
+       Branch 'main' set up to track remote branch 'main' from 'remote2'.
+       Everything up-to-date
