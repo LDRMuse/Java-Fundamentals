@@ -10,7 +10,19 @@ class ArithmeticOperators {
 
     public static void main(String[] args) {
 
-        // write your code below
+        int a = 10;
+        int b = 2;
+        int sum = a + b;
+        int difference = a - b;
+        int multiply = a * b;
+        double divide = b / a;
+        double modulus = b % a;
+
+        System.out.println(sum);
+        System.out.println(difference);
+        System.out.println(multiply);
+        System.out.println(divide);
+        System.out.println(modulus);
 
     }
 

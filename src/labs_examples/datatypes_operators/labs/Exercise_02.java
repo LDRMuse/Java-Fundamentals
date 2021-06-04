@@ -23,7 +23,15 @@ public class Exercise_02 {
 
     public static void main(String[] args) {
 
-        // write code here
+        // widening
+        int num = 19;
+        double d = num;
+        System.out.println(d);
+
+        // narrowing
+        double dd = 10.5;
+        int num2 = (int) dd;
+        System.out.println(num2);
 
     }
 }
