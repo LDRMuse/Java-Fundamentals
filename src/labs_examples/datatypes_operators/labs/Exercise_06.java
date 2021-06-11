@@ -19,6 +19,5 @@ public class Exercise_06 {
 
         System.out.println("Volume = " + volume);
         System.out.println("Surface Area = " + surfaceArea);
-
     }
 }

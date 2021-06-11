@@ -26,6 +26,6 @@ public class Exercise_07 {
 
         // write completed code here
         System.out.println(days + " day(s) = " + (days * seconds) + " seconds");
-        
+
     }
 }
