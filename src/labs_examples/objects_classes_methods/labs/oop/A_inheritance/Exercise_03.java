@@ -3,7 +3,9 @@ package labs_examples.objects_classes_methods.labs.oop.A_inheritance;
 /**
  * Why does the output print in the order it does?
  *
- * You answer:
+ * You answer: class A_1 was created first ( and the constructor was initialized first),
+ * class B_2 was created second and the constructor was initialized 2nd,
+ * and Finally C_1 constructor was created and initialized last.
  *
  */
 

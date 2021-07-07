@@ -1,7 +1,9 @@
 
 Without running the code below, please tell me what it will print.
 
-
+We have an object called "c" that is of type Parent, but we are calling the Child's overwritten method.
+The Child class has an overwritten method (even though it doesn't have that annotated as @Override) and it calls the Child class doSomething()
+Therefore printing "Child called" will be printed.
 
 public class InheritanceTest
 {
