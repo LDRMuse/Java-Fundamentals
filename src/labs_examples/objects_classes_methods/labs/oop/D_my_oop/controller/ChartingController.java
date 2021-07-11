@@ -7,6 +7,10 @@ import labs_examples.objects_classes_methods.labs.oop.D_my_oop.services.ChartEnt
 
 import java.util.Scanner;
 
+// TODO: Menu -> main method intro screen
+//TODO: Break into smaller methods (modular)
+// rename chartEntry to appoinments
+
 public class ChartingController {
     public static void main(String[] args) {
         Person client = new Person();
@@ -72,9 +76,9 @@ public class ChartingController {
             answer = scanner.next();
             chartEntry.setTypeOfService(answer);
             chartEntry.setProductsUsed(products);
-            //TODO: Figure out how to get the full string with spaces
             System.out.println("Notes on service:");
-            answer = scanner.next();
+            scanner.nextLine();
+            answer = scanner.nextLine();
             chartEntry.setNotes(answer);
 
             chartEntriesImpl.addChartEntryToChart(chartEntry);

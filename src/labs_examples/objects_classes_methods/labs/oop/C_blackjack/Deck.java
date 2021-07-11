@@ -24,6 +24,10 @@ public class Deck {
         return cards;
     }
 
+    public void resetDeck() {
+        this.cards = populateCardArray();
+    }
+
     public void deal(Player player) {
         // calling generateRandomNumber and store it in a variable
         int randomNumber = this.generateRandomNumber();
@@ -49,8 +53,6 @@ public class Deck {
         int max = 52;
         return (int) Math.floor(Math.random() * max);
     }
-
-
 
     @Override
     public String toString() {

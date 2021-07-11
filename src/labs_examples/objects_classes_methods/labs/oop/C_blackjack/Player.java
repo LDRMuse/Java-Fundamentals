@@ -1,13 +1,23 @@
 package labs_examples.objects_classes_methods.labs.oop.C_blackjack;
 
+import javax.xml.bind.SchemaOutputResolver;
+import java.util.Scanner;
+
 public class Player {
     String name;
     Hand hand;
+    int potValue;
+    boolean winner;
+    static int numberOfGamesPlayed;
+    static boolean newGame;
 
-    public Player(){
+    public Player() {
         // default name of player
         this.name = "Computer";
         this.hand = new Hand();
+        this.potValue = 200;
+        this.winner = false;
+        newGame = false;
     }
 
     public boolean computerAI() {
@@ -30,12 +40,87 @@ public class Player {
         this.hand = hand;
     }
 
+    public int getPotValue() {
+        return this.potValue;
+    }
+
+    public void setPotValue(int potValue) {
+        this.potValue = potValue;
+    }
+
+
+    public static boolean isNewGame() {
+        return newGame;
+    }
+
+    public static void setNewGame(boolean newGame) {
+        Player.newGame = newGame;
+    }
+
+    public boolean isWinner() {
+        return winner;
+    }
+
+    public void setWinner(boolean winner) {
+        this.winner = winner;
+    }
+
+    public void askPlayersName(Player player) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Hello and welcome to BlackJack! What is your name?");
+        this.name = scanner.next();
+        player.setName(name);
+    }
+
+
+    public int askBetAmount(Player human) {
+        Scanner scanner = new Scanner(System.in);
+        int moneyToBet;
+        System.out.println("How much money would like to bet, " + human.getName() + "? You currently have $" + human.getPotValue());
+        moneyToBet = scanner.nextInt();
+
+        while (moneyToBet > human.getPotValue()) {
+            System.out.println("You cannot bet more money than you have..");
+            System.out.println("How much money would like to bet? You have $" + human.getPotValue());
+            moneyToBet = scanner.nextInt();
+        }
+        return moneyToBet;
+    }
+
+    public void handleBets(Player human, Player computer, int moneyToBet) {
+        if (human.isWinner()) {
+            human.setPotValue(human.getPotValue() + moneyToBet);
+            computer.setPotValue(computer.getPotValue() - moneyToBet);
+        } else {
+            human.setPotValue(human.getPotValue() - moneyToBet);
+            computer.setPotValue(computer.getPotValue() + moneyToBet);
+        }
+        keepTrackOfMoney(human,computer);
+    }
+
+    public static void keepTrackOfMoney(Player human, Player computer) {
+        System.out.println("Your pot value is now $" + human.getPotValue());
+        System.out.println("Computers pot value: $" + computer.getPotValue());
+    }
+
+    public static void humanWinner(Player human, Player computer) {
+        human.setWinner(true);
+        computer.setWinner(false);
+        Player.setNewGame(true);
+    }
+
+    public static void computerWinner(Player human, Player computer) {
+        human.setWinner(false);
+        computer.setWinner(true);
+        Player.setNewGame(true);
+    }
 
     @Override
     public String toString() {
         return "Player{" +
                 "name='" + name + '\'' +
                 ", hand=" + hand +
+                ", pot value=" + potValue +
                 '}';
     }
 }
