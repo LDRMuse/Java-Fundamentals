@@ -25,8 +25,6 @@ public class BlackJackController {
             System.out.println("Lets play! Game: " + Player.numberOfGamesPlayed);
             int moneyToBet = human.askBetAmount(human);
 
-
-            //TODO start deck over
             if (Player.isNewGame()) {
                 deck = new Deck();
                 human.setHand(new Hand());
@@ -46,7 +44,6 @@ public class BlackJackController {
                 System.out.println("Would you like another card? (y/n)");
                 answer = scanner.next();
 
-                //BUST
                 if (answer.equalsIgnoreCase("y")) {
                     deck.deal(human);
                     System.out.println(human.getHand());
@@ -101,7 +98,6 @@ public class BlackJackController {
                     human.handleBets(human, computer, moneyToBet);
                 }
             }
-            //todo: put an if here?? these lines are still being executed
 
             if (human.getPotValue() != 0 && computer.getPotValue() != 0) {
                 System.out.println("Computers hand: " + computer.getHand());
