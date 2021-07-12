@@ -2,22 +2,19 @@ package labs_examples.objects_classes_methods.labs.oop.D_my_oop.models;
 
 import java.util.Date;
 
-public class Person {
+public class Client {
     private String firstName;
     private String lastName;
     private String email;
     private String phone;
     private Date date;
-    private boolean isAdmin;
 
-
-    public Person() {
+    public Client() {
         this.date = new Date();
         this.firstName = "First name not entered";
         this.lastName = "Last name not entered";
         this.email = "Email not entered";
         this.phone = "Phone not entered";
-        this.isAdmin = false;
     }
 
     public String getFirstName() {
@@ -52,14 +49,6 @@ public class Person {
         this.phone = phone;
     }
 
-    public boolean isAdmin() {
-        return isAdmin;
-    }
-
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
-    }
-
     public Date getDate() {
         return date;
     }
@@ -74,4 +63,5 @@ public class Person {
                 ", Email: " + email +
                 ", Phone: " + phone;
     }
+
 }

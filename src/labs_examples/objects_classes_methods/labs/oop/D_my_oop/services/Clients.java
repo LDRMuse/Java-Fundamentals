@@ -1,0 +1,11 @@
+package labs_examples.objects_classes_methods.labs.oop.D_my_oop.services;
+
+import labs_examples.objects_classes_methods.labs.oop.D_my_oop.models.Client;
+
+import java.util.ArrayList;
+
+public interface Clients {
+
+     Client createNewClient(Client client);
+     Client searchClient(Client client);
+}
