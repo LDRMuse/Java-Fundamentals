@@ -76,12 +76,23 @@ public class Player {
     public int askBetAmount(Player human) {
         Scanner scanner = new Scanner(System.in);
         int moneyToBet;
-        System.out.println("How much money would like to bet, " + human.getName() + "? You currently have $" + human.getPotValue());
+        System.out.println("How much money would like to bet? You currently have $" + human.getPotValue());
+
+        while (!scanner.hasNextInt()) {
+            System.out.println("Please bet a real number..");
+            scanner.next();
+        }
         moneyToBet = scanner.nextInt();
 
         while (moneyToBet > human.getPotValue()) {
             System.out.println("You cannot bet more money than you have..");
-            System.out.println("How much money would like to bet? You have $" + human.getPotValue());
+            System.out.println("Out of your pot value of $" + human.getPotValue() + ", how much money would you like to bet?");
+
+            while (!scanner.hasNextInt()) {
+                System.out.println("Please bet a real number..");
+                scanner.next();
+            }
+
             moneyToBet = scanner.nextInt();
         }
         return moneyToBet;

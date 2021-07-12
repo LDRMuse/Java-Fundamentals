@@ -20,9 +20,9 @@ public class BlackJackController {
             human.askPlayersName(human);
         }
 
-        while (human.getPotValue() >= 1) {
+        while (human.getPotValue() >= 1 && computer.getPotValue() >= 1) {
             Player.numberOfGamesPlayed++;
-            System.out.println("Lets play! Game: " + Player.numberOfGamesPlayed);
+            System.out.println("Lets play, " + human.getName() + "! Game: " + Player.numberOfGamesPlayed);
             int moneyToBet = human.askBetAmount(human);
 
             if (Player.isNewGame()) {
