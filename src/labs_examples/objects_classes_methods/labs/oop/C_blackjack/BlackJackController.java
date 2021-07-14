@@ -1,5 +1,6 @@
 package labs_examples.objects_classes_methods.labs.oop.C_blackjack;
 
+import javax.sound.midi.Soundbank;
 import java.util.Scanner;
 
 public class BlackJackController {
@@ -70,6 +71,7 @@ public class BlackJackController {
                     System.out.println("You have chosen to stay. Score: " + human.hand.getHandValue());
                     human.setWinner(true);
                     computer.setWinner(true);
+                    human.stay = true;
                     break;
                 }
 
@@ -85,43 +87,50 @@ public class BlackJackController {
             System.out.println("- Computers turn -");
             System.out.println();
 
-            while (computer.computerAI() && !computer.isWinner() && !human.isWinner()) {
-                //DRAW CARD
-                deck.deal(computer);
-                if (computer.hand.getHandValue() == 21) {
-                    Player.computerWinner(human, computer);
-                    System.out.println("Blackjack! Computer won.");
-                    computer.countNumberOfGamesWon();
-                    human.handleBets(human, computer, moneyToBet);
-                }
-                if (computer.hand.getHandValue() > 21) {
-                    Player.humanWinner(human, computer);
-                    human.countNumberOfGamesWon();
+            System.out.println("Computers starting hand: " + computer.getHand());
+
+                while (computer.computerAI()) {
+                    //DRAW CARD
+                    deck.deal(computer);
+                    System.out.println("Computer draws a card..");
                     System.out.println("Computers hand: " + computer.getHand());
-                    System.out.println("Computer busted and got a total of " + computer.hand.getHandValue() + ". " + human.getName() + " wins this time!");
+                }
+
+                    if (computer.hand.getHandValue() == 21) {
+                        Player.computerWinner(human, computer);
+                        System.out.println("Blackjack! Computer won.");
+                        computer.countNumberOfGamesWon();
+                        human.handleBets(human, computer, moneyToBet);
+                        break;
+                    }
+                    if (computer.hand.getHandValue() > 21) {
+                        Player.humanWinner(human, computer);
+                        human.countNumberOfGamesWon();
+                        System.out.println("Computers hand: " + computer.getHand());
+                        System.out.println("Computer busted and got a total of " + computer.hand.getHandValue() + ". " + human.getName() + " wins this time!");
+                        human.handleBets(human, computer, moneyToBet);
+                        break;
+                    }
+
+                    int totalComputerScore = computer.hand.getHandValue();
+                    int totalHumanScore = human.hand.getHandValue();
+
+                    if (totalComputerScore > totalHumanScore && totalComputerScore < 21) {
+                        Player.computerWinner(human, computer);
+                        computer.countNumberOfGamesWon();
+                        System.out.println("Both players have decided to stay. The winner is " + computer.getName() + " with a score of " + totalComputerScore + ".");
+                    }
+                    if (totalHumanScore > totalComputerScore) {
+                        human.countNumberOfGamesWon();
+                        Player.humanWinner(human, computer);
+                        System.out.println("Both players have decided to stay. The winner is " + human.getName() + " with a score of " + totalHumanScore + ".");
+                    }
+                    System.out.println();
                     human.handleBets(human, computer, moneyToBet);
+                    System.out.println();
+
                 }
-            }
 
-            if (human.getPotValue() != 0 && computer.getPotValue() != 0) {
-                System.out.println("Computers hand: " + computer.getHand());
-                System.out.println("Computer has chosen to stay!");
-                int totalComputerScore = computer.hand.getHandValue();
-                int totalHumanScore = human.hand.getHandValue();
-
-                if (totalComputerScore > totalHumanScore) {
-                    Player.computerWinner(human, computer);
-                    computer.countNumberOfGamesWon();
-                    System.out.println("Both players have decided to stay. The winner is " + computer.getName() + " with a score of " + totalComputerScore + ".");
-                } else {
-                    human.countNumberOfGamesWon();
-                    Player.humanWinner(human, computer);
-                    System.out.println("Both players have decided to stay. The winner is " + human.getName() + " with a score of " + totalHumanScore + ".");
-                }
-                human.handleBets(human, computer, moneyToBet);
-
-            }
-        }
 
         if (computer.getPotValue() > human.getPotValue()) {
             System.out.println(computer.getName() + " won the full pot and collects $" + computer.getPotValue());

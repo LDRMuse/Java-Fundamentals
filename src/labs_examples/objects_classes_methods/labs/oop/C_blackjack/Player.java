@@ -10,6 +10,7 @@ public class Player {
     static int numberOfGamesPlayed;
     static boolean newGame;
     int numberOfGamesWon;
+    boolean stay;
 
     public Player() {
         // default name of player
@@ -19,6 +20,7 @@ public class Player {
         this.winner = false;
         newGame = false;
         numberOfGamesWon = 0;
+        this.stay = false;
     }
 
     public boolean computerAI() {
@@ -73,6 +75,14 @@ public class Player {
 
     public void countNumberOfGamesWon() {
         numberOfGamesWon++;
+    }
+
+    public void setStay(boolean stay) {
+        this.stay = stay;
+    }
+
+    public boolean isStay() {
+        return stay;
     }
 
     public void askPlayersName(Player player) {
