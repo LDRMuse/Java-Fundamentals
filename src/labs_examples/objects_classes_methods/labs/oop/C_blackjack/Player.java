@@ -1,6 +1,5 @@
 package labs_examples.objects_classes_methods.labs.oop.C_blackjack;
 
-import javax.xml.bind.SchemaOutputResolver;
 import java.util.Scanner;
 
 public class Player {
@@ -10,6 +9,7 @@ public class Player {
     boolean winner;
     static int numberOfGamesPlayed;
     static boolean newGame;
+    int numberOfGamesWon;
 
     public Player() {
         // default name of player
@@ -18,6 +18,7 @@ public class Player {
         this.potValue = 200;
         this.winner = false;
         newGame = false;
+        numberOfGamesWon = 0;
     }
 
     public boolean computerAI() {
@@ -63,6 +64,15 @@ public class Player {
 
     public void setWinner(boolean winner) {
         this.winner = winner;
+    }
+
+    public int getNumberOfGamesWon() {
+        return numberOfGamesWon;
+    }
+
+
+    public void countNumberOfGamesWon() {
+        numberOfGamesWon++;
     }
 
     public void askPlayersName(Player player) {

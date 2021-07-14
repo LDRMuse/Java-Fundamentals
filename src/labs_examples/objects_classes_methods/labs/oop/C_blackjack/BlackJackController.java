@@ -50,6 +50,7 @@ public class BlackJackController {
                     if (human.hand.getHandValue() > 21) {
                         Player.computerWinner(human, computer);
                         System.out.println("You busted and got a total of " + human.hand.getHandValue() + ". Computer wins this time! ");
+                        computer.countNumberOfGamesWon();
                         human.handleBets(human, computer, moneyToBet);
                         computer.setWinner(false);
                         break;
@@ -57,6 +58,7 @@ public class BlackJackController {
                     if (human.hand.getHandValue() == 21) {
                         Player.humanWinner(human, computer);
                         System.out.println("Score: " + human.hand.getHandValue() + ". You won! ");
+                        human.countNumberOfGamesWon();
                         human.handleBets(human, computer, moneyToBet);
                         human.setWinner(false);
                         break;
@@ -83,16 +85,18 @@ public class BlackJackController {
             System.out.println("- Computers turn -");
             System.out.println();
 
-            while (computer.computerAI()) {
+            while (computer.computerAI() && !computer.isWinner() && !human.isWinner()) {
                 //DRAW CARD
                 deck.deal(computer);
                 if (computer.hand.getHandValue() == 21) {
                     Player.computerWinner(human, computer);
                     System.out.println("Blackjack! Computer won.");
+                    computer.countNumberOfGamesWon();
                     human.handleBets(human, computer, moneyToBet);
                 }
                 if (computer.hand.getHandValue() > 21) {
                     Player.humanWinner(human, computer);
+                    human.countNumberOfGamesWon();
                     System.out.println("Computers hand: " + computer.getHand());
                     System.out.println("Computer busted and got a total of " + computer.hand.getHandValue() + ". " + human.getName() + " wins this time!");
                     human.handleBets(human, computer, moneyToBet);
@@ -107,8 +111,10 @@ public class BlackJackController {
 
                 if (totalComputerScore > totalHumanScore) {
                     Player.computerWinner(human, computer);
+                    computer.countNumberOfGamesWon();
                     System.out.println("Both players have decided to stay. The winner is " + computer.getName() + " with a score of " + totalComputerScore + ".");
                 } else {
+                    human.countNumberOfGamesWon();
                     Player.humanWinner(human, computer);
                     System.out.println("Both players have decided to stay. The winner is " + human.getName() + " with a score of " + totalHumanScore + ".");
                 }
@@ -118,10 +124,13 @@ public class BlackJackController {
         }
 
         if (computer.getPotValue() > human.getPotValue()) {
-            System.out.println("Computer wins!! Collect your money of: " + computer.getPotValue());
+            System.out.println(computer.getName() + " won the full pot and collects $" + computer.getPotValue());
         } else {
-            System.out.println(human.getName() + " wins!! Collect your money of: " + human.getPotValue());
+            System.out.println(human.getName() + " won the full pot and collects $" + human.getPotValue());
         }
+
+        System.out.println("Number of games won by " + human.getName() + ": " + human.getNumberOfGamesWon());
+        System.out.println("Number of games won by " + computer.getName() + ": " + computer.getNumberOfGamesWon());
 
     }
 

@@ -17,7 +17,7 @@ public class Controller {
     }
 
 
-        public static ClientsImpl runApp() {
+        public static void runApp() {
             ClientsImpl clientImpl = new ClientsImpl();
             MenuServiceImpl menu = new MenuServiceImpl();
             Client client = new Client();
@@ -34,6 +34,9 @@ public class Controller {
                         clientImpl.createNewClient(client);
                         break;
                     case 2:
+                        //TODO: the object app takes the new client we created and does logic to create and appointment
+                        // but if we have multiple clients, we need a way to select the specific client
+                        // figure out how to do that
                         AppointmentsImpl app = new AppointmentsImpl(client, clientImpl);
                         app.createAppointmentForExistingClient(client);
                         break;
