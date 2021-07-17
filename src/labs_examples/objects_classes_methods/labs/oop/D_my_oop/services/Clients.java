@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public interface Clients {
 
-     Client createNewClient(Client client);
-     Client searchClient(Client client);
+     void createNewClient();
+
+      Client searchClient();
 }

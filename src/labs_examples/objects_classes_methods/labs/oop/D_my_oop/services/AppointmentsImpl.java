@@ -3,7 +3,7 @@ package labs_examples.objects_classes_methods.labs.oop.D_my_oop.services;
 import labs_examples.objects_classes_methods.labs.oop.D_my_oop.models.Appointment;
 import labs_examples.objects_classes_methods.labs.oop.D_my_oop.models.Client;
 import labs_examples.objects_classes_methods.labs.oop.D_my_oop.models.Product;
-import labs_examples.objects_classes_methods.labs.oop.D_my_oop.models.Service;
+import labs_examples.objects_classes_methods.labs.oop.D_my_oop.models.SalonService;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -14,8 +14,7 @@ public class AppointmentsImpl implements Appointments {
     String answer;
     Client client;
 
-    public AppointmentsImpl(Client client, ClientsImpl clientImpl) {
-        this.client = client;
+    public AppointmentsImpl(ClientsImpl clientImpl) {
         this.clients = clientImpl;
     }
 
@@ -27,12 +26,14 @@ public class AppointmentsImpl implements Appointments {
         System.out.println(chart);
     }
 
+    //TODO: continue to modularize
     @Override
-    public void createAppointmentForExistingClient(Client client) {
-        clients.searchClient(client);
+    public void createAppointmentForExistingClient() {
+        Client client;
+        client = clients.searchClient();
+        ArrayList salonServices = new ArrayList();
+        ArrayList productList = new ArrayList();
         Appointment appointment = new Appointment(client);
-        Service service = new Service();
-        Product product = new Product();
         Scanner scanner = new Scanner(System.in);
         String answer;
 
@@ -43,22 +44,35 @@ public class AppointmentsImpl implements Appointments {
 
         appointment.setDate(client.getDate());
 
+
         // get services
-        enterTypeOfService(service);
+        SalonService salonService = new SalonService();
+        enterTypeOfService(salonService);
+        salonServices.add(salonService);
         answer = getYOrNAnswerForServiceEntry();
         while (answer.equalsIgnoreCase("y")) {
-            enterTypeOfService(service);
+            salonService = new SalonService();
+            enterTypeOfService(salonService);
+            salonServices.add(salonService);
             answer = getYOrNAnswerForServiceEntry();
 
         }
+        // create array list of salonServices and pass in salonService
+        appointment.setServices(salonServices);
         //get products
         System.out.println("- Add a product -");
+        Product product = new Product();
         enterBrandAndTypeOFProduct(product);
+        productList.add(product);
         answer = getYOrNAnswerForProductEntry();
         while (answer.equalsIgnoreCase("y")) {
             enterBrandAndTypeOFProduct(product);
+            productList.add(product);
             answer = getYOrNAnswerForProductEntry();
         }
+
+        //TODO fix the toString
+        appointment.setProducts(productList);
         // get notes
         System.out.println("- Enter notes about service(s) -");
         System.out.println();
@@ -71,10 +85,10 @@ public class AppointmentsImpl implements Appointments {
         addAppointmentToChart(appointment);
     }
 
-    public void enterTypeOfService(Service service) {
+    public void enterTypeOfService(SalonService salonService) {
         System.out.println("Enter type of service");
         answer = scanner.next();
-        service.addServiceToServices(answer);
+        salonService.addServiceToServices(answer);
     }
 
     public void enterBrandAndTypeOFProduct(Product product) {

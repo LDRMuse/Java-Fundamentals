@@ -39,4 +39,11 @@ public class Product {
     public void addProductToProducts(String brand, String typeOfProduct) {
         listOfProducts.put(brand, typeOfProduct);
     }
+
+    @Override
+    public String toString() {
+        return
+                "brand: " + brand +
+                "& use: " + typeOfProduct;
+    }
 }

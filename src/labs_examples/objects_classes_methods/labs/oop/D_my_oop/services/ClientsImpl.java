@@ -8,8 +8,13 @@ import java.util.Scanner;
 public class ClientsImpl implements Clients {
     private static final ArrayList<Client> clients = new ArrayList<>();
 
+    public static ArrayList<Client> getClients() {
+        return clients;
+    }
+
     @Override
-    public Client createNewClient(Client client) {
+    public void createNewClient() {
+        Client client = new Client();
         Scanner scanner = new Scanner(System.in);
         System.out.println("- Chart Client -");
 
@@ -31,16 +36,28 @@ public class ClientsImpl implements Clients {
         System.out.println("Client Created on " + client.getDate());
         System.out.println(client);
         clients.add(client);
-        return client;
     }
 
     @Override
-    public Client searchClient(Client client) {
-        if (clients.contains(client)) {
-            return client;
-        } else {
-            System.out.println("Client not found");
+    public Client searchClient() {
+        Scanner scanner = new Scanner(System.in);
+        String answer;
+        System.out.println("Enter last name of client");
+        answer = scanner.next();
+        ArrayList<Client> searchedClient = new ArrayList<>();
+
+        for (Client client : clients) {
+            if ((client.getLastName().equalsIgnoreCase(answer))) {
+                searchedClient.add(client);
+                System.out.println(searchedClient.get(0));
+                return searchedClient.get(0);
+            } else {
+                System.out.println("No results for your search");
+            }
+
         }
-        return client;
+
+        return searchedClient.get(0);
     }
+
 }

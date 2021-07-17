@@ -7,6 +7,6 @@ public interface Appointments {
 
      void addAppointmentToChart(Appointment appointment);
 
-     void createAppointmentForExistingClient(Client client);
+     void createAppointmentForExistingClient();
 
 }

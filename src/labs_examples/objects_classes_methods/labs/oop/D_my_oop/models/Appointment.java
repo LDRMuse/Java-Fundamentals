@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class Appointment {
     private Date date;
-    private ArrayList<Service> services;
+    private ArrayList<SalonService> salonServices;
     private ArrayList<Map> products;
     private String notes;
     private Client client;
@@ -26,12 +26,12 @@ public class Appointment {
         this.date = date;
     }
 
-    public ArrayList<Service> getServices() {
-        return services;
+    public ArrayList<SalonService> getServices() {
+        return salonServices;
     }
 
-    public void setServices(ArrayList<Service> services) {
-        this.services = services;
+    public void setServices(ArrayList<SalonService> salonServices) {
+        this.salonServices = salonServices;
     }
 
     public ArrayList<Map> getProducts() {
@@ -60,12 +60,10 @@ public class Appointment {
 
     @Override
     public String toString() {
-        return "Appointment{" +
-                "date=" + date +
-                ", services=" + services +
-                ", products=" + products +
-                ", notes='" + notes + '\'' +
-                ", client=" + client +
-                '}';
+        return "Appointment for: " + client +
+                "date:" + date +
+                ", service(s):" + salonServices +
+                ", product(s):" + products +
+                ", notes: " + notes;
     }
 }

@@ -2,11 +2,11 @@ package labs_examples.objects_classes_methods.labs.oop.D_my_oop.models;
 
 import java.util.ArrayList;
 
-public class Service {
+public class SalonService {
     String service;
     ArrayList<String> services;
 
-    public Service() {
+    public SalonService() {
         this.service= "";
         this.services = new ArrayList<>();
     }
@@ -29,10 +29,7 @@ public class Service {
 
     @Override
     public String toString() {
-        return "Service{" +
-                "service='" + service + '\'' +
-                ", services=" + services +
-                '}';
+        return "" + services;
     }
 
     public void addServiceToServices(String service) {

@@ -6,8 +6,6 @@ import labs_examples.objects_classes_methods.labs.oop.D_my_oop.services.ClientsI
 import labs_examples.objects_classes_methods.labs.oop.D_my_oop.services.MenuServiceImpl;
 
 
-//TODO: figure out why the toString is displaying null for products and services
-
 public class Controller {
 
     public static void main(String[] args) {
@@ -20,8 +18,6 @@ public class Controller {
         public static void runApp() {
             ClientsImpl clientImpl = new ClientsImpl();
             MenuServiceImpl menu = new MenuServiceImpl();
-            Client client = new Client();
-
 
             System.out.println("--- Client Management Application ---");
             System.out.println("");
@@ -31,14 +27,12 @@ public class Controller {
 
                 switch (menuChoice) {
                     case 1:
-                        clientImpl.createNewClient(client);
+                        clientImpl.createNewClient();
                         break;
                     case 2:
-                        //TODO: the object app takes the new client we created and does logic to create and appointment
-                        // but if we have multiple clients, we need a way to select the specific client
-                        // figure out how to do that
-                        AppointmentsImpl app = new AppointmentsImpl(client, clientImpl);
-                        app.createAppointmentForExistingClient(client);
+                        AppointmentsImpl app = new AppointmentsImpl(clientImpl);
+                        app.createAppointmentForExistingClient();
+                        System.out.println();
                         break;
                     case 3:
                         System.out.println("you chose 3");
