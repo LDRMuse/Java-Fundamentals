@@ -2,10 +2,9 @@ package labs_examples.exception_handling.labs;
 
 /**
  * Exception Handling Exercise 7:
- *
- *      1) Create a custom exception.
- *      2) Demonstrate a method throwing your custom exception.
- *
+ * <p>
+ * 1) Create a custom exception.
+ * 2) Demonstrate a method throwing your custom exception.
  */
 
 class runApp {
@@ -13,8 +12,12 @@ class runApp {
         int money = 5;
         try {
             buyABoat(money);
+            // We already created the obj when we typed "throws new MoneyException();
+            // new we are naming that obj me
         } catch (MoneyException me) {
-            System.out.println( me.toString());
+            // MoneyException class has only one method to use which is toString();
+            // so we call the instance me.toString();
+            System.out.println(me.toString());
         }
 
     }
@@ -23,8 +26,8 @@ class runApp {
         int oneMillion = 1_000_000;
         if (money > oneMillion) {
             System.out.println("Yay you can buy a boat");
-        }
-        else {
+        } else {
+            // we are creating a new object by calling MoneyException Constructor;
             throw new MoneyException();
         }
     }
