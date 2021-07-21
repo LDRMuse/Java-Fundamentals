@@ -104,6 +104,13 @@ public class Player {
         }
         moneyToBet = scanner.nextInt();
 
+        while (moneyToBet < 0) {
+            System.out.println("You cannot bet negative numbers..");
+            System.out.println("Out of your pot value of $" + human.getPotValue() + ", how much money would you like to bet?");
+
+            moneyToBet = scanner.nextInt();
+        }
+
         while (moneyToBet > human.getPotValue()) {
             System.out.println("You cannot bet more money than you have..");
             System.out.println("Out of your pot value of $" + human.getPotValue() + ", how much money would you like to bet?");
@@ -119,11 +126,15 @@ public class Player {
     }
 
     public void handleBets(Player human, Player computer, int moneyToBet) {
-        if (human.isWinner()) {
+        if (human.isWinner() && !computer.isWinner()) {
             human.setPotValue(human.getPotValue() + moneyToBet);
             computer.setPotValue(computer.getPotValue() - moneyToBet);
-        } else {
+        } if (!human.isWinner() && computer.isWinner()) {
             human.setPotValue(human.getPotValue() - moneyToBet);
+            computer.setPotValue(computer.getPotValue() + moneyToBet);
+        }
+        if (!human.isWinner() && !computer.isWinner()) {
+            human.setPotValue(human.getPotValue() + moneyToBet);
             computer.setPotValue(computer.getPotValue() + moneyToBet);
         }
         keepTrackOfMoney(human,computer);
