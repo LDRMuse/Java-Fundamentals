@@ -8,11 +8,12 @@ import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+// Using BufferReader to read a full line of input using (InputStreamReader)
+// and writing the line to the file path (FileWriter) until "stop" is written
 
 class KtoD {
     public static void main(String args[])
     {
-
         String str;
         String filePath = "src/labs_examples/input_output/files/KtoD.txt";
 
